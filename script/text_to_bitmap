@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require File.join(*%W[#{__dir__} .. lib bdf.rb])
+
+while str = STDIN.gets
+  str.strip.to_bdf.transpose.each do |line|
+    bits = line.join.to_i(2)
+    if bits > 0
+      puts sprintf("%#06x", bits)
+    else
+      puts '0x0000'
+    end
+  end
+end

@@ -36,7 +36,11 @@ describe Bdf do
     end
 
     it 'String.to_bdf too' do
-      expect('a漢abc'.to_bdf.map{|line| line.join}).to eq binaly_arrays
+      expect('a漢abc'.to_bdf.map(&:join)).to eq binaly_arrays
+    end
+
+    it '(memo)配列の90度回転' do
+      expect('a漢abc'.to_bdf.transpose.first.join).to eq '0000000000111000'
     end
   end
 end
